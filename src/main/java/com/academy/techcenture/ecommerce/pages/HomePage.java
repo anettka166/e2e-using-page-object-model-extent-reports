@@ -57,8 +57,7 @@ public class HomePage extends BasePage{
         Thread.sleep(3000);
         wait.until(ExpectedConditions.elementToBeClickable(signInLink));
         signInLink.click();
-
-        System.out.println("clicking sign in link");
+        wait.until(ExpectedConditions.titleIs("Login - My Store"));
     }
 
     public void clickContactUsLink(){

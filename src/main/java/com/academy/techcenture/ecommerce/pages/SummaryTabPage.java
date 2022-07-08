@@ -153,6 +153,8 @@ public class SummaryTabPage extends HomePage {
     @FindBy(xpath = "//div[@class='box']")
     private WebElement orderCompleteInformation;
 
+    @FindBy(linkText = "Back to orders")
+    private WebElement backToOrdersLnk;
 
     private void proceedToCheckOut() {
 
@@ -376,10 +378,8 @@ public class SummaryTabPage extends HomePage {
         String orderInfoTextUi = orderCompleteInformation.getText().trim();
         orderInfoTextUi = orderInfoTextUi.replace(" " + orderReference, "");
         assertEquals(orderInfoTextUi, data.get("OrderCompleteInfo"));
+        goBackToOrders();
     }
-
-    @FindBy(linkText = "Back to orders")
-    private WebElement backToOrdersLnk;
 
     private void goBackToOrders(){
         wait.until(ExpectedConditions.elementToBeClickable(backToOrdersLnk));

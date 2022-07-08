@@ -7,6 +7,9 @@ import org.testng.Assert;
 import java.io.*;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 
 import static org.testng.Assert.assertTrue;
 
@@ -43,6 +46,34 @@ public class OrderHistoryPage extends HomePage{
         Thread.sleep(4000);
 
         verifyPdfInvoiceFile(data);
+
+
+//        ExecutorService executorService = Executors.newFixedThreadPool(1);
+//
+//        FutureTask<String> downloadProcess = new FutureTask<>( new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    verifyPdfInvoiceFile(data);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, "Download process is complete");
+//
+//        executorService.submit(downloadProcess);
+//
+//        while (true){
+//            if (downloadProcess.isDone()){
+//                System.out.println("-----Download, reading and verification process has finished!");
+//                executorService.shutdown();
+//                break;
+//            }
+//
+//            if (!downloadProcess.isDone()){
+//                System.out.println("-----Still waiting for download, reading and verification to finish");
+//            }
+//        }
     }
 
     private void verifyPdfInvoiceFile(Map<String,String> data) throws IOException {
